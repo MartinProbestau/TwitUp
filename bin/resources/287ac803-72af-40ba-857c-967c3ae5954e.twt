@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:twitXml xmlns:ns2="http://www.example.org/twit/">
+    <ID>287ac803-72af-40ba-857c-967c3ae5954e</ID>
+    <EmissionDate>1646749242718</EmissionDate>
+    <Twiter>234abdbb-04e4-4a05-9bfa-5e27ff14c39a</Twiter>
+    <Text>Ceci est un twit très très très très très très très très très très très très très très très très très très très très très très très très très très très très très très très très très très très très très très très long</Text>
+</ns2:twitXml>

@@ -1,0 +1,14 @@
+{
+    "telemetry.machineId": "7565f646061f3c514bce457d06b406c809c7d540eeebe9d46963a63658423a08",
+    "openedPathsList": {
+        "workspaces3": [
+            {
+                "id": "62599b97cad3a98d0667a65514b48bf2",
+                "configURIPath": "file:///d%3A/TwitUp/.metadata/codemix.code-workspace"
+            }
+        ],
+        "files2": []
+    },
+    "theme": "vs-dark",
+    "themeBackground": "#221a0f"
+}
