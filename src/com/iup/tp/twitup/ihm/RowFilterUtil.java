@@ -28,20 +28,20 @@ public class RowFilterUtil {
         tf.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
-                update(e);
+                update();
             }
 
             @Override
             public void removeUpdate(DocumentEvent e) {
-                update(e);
+                update();
             }
 
             @Override
             public void changedUpdate(DocumentEvent e) {
-                update(e);
+                update();
             }
 
-            private void update(DocumentEvent e) {
+            private void update() {
                 String text = tf.getText();
                 if (text.trim().length() == 0) {
                     rowSorter.setRowFilter(null);

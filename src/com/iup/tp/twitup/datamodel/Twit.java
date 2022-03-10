@@ -72,7 +72,7 @@ public class Twit {
 		mUserTags = new HashSet<String>();
 
 		// Initialisation des mots-cl�s
-		this.initTags(new String(mText));
+		this.initTags(mText);
 	}
 
 	/**
@@ -234,7 +234,7 @@ public class Twit {
 			tag += "#"+liste;
 		}
 		
-		Object twit[] = new Object[1];
+		Object[] twit = new Object[1];
 		
 		if(tag.equals("")) {
 			twit[0] = "<html><p>"+texteTwit+"</p><br><p>"+this.mTwiter.getUserTag()+" @"+this.mTwiter.getUserTag()+"</p><p> -- "+date+" -- </p></html>";

@@ -16,6 +16,7 @@ public class LimitField extends PlainDocument
       super();
       this.max = max;
    }
+   @Override
    public void insertString(int offset, String text, AttributeSet attr) throws BadLocationException {
       if (text == null)
          return;

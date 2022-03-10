@@ -39,6 +39,7 @@ public class ButtonEditor extends DefaultCellEditor {
 	    });
 	  }
 
+	  @Override
 	  public Component getTableCellEditorComponent(JTable table, Object value,
 	      boolean isSelected, int row, int column) {
 	    if (isSelected) {
@@ -60,19 +61,22 @@ public class ButtonEditor extends DefaultCellEditor {
 	    return button;
 	  }
 
+	  @Override
 	  public Object getCellEditorValue() {
 	    if (isPushed) {
 	    	JOptionPane.showMessageDialog(null, this.userController.abonnerDesabonner(this.tag));
 	    }
 	    isPushed = false;
-	    return new String(label);
+	    return label;
 	  }
 
+	  @Override
 	  public boolean stopCellEditing() {
 	    isPushed = false;
 	    return super.stopCellEditing();
 	  }
 
+	  @Override
 	  protected void fireEditingStopped() {
 	    super.fireEditingStopped();
 	  }
