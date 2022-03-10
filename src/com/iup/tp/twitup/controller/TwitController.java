@@ -37,9 +37,9 @@ public class TwitController {
 	public Object[][] listTwits(){
 		List<Twit> liste = mDatabase.getTwits().stream().collect(Collectors.toList());
 		liste.sort(Comparator.comparing(Twit::getEmissionDate).reversed());
-		Object listeTwits[][] = new Object[liste.size()][];
+		Object[][] listeTwits = new Object[liste.size()][];
 		for(int i = 0; i < liste.size(); i++) {
-			Object table[] = liste.get(i).toRow();
+			Object[] table = liste.get(i).toRow();
 			listeTwits[i] = table;
 		}
 		return listeTwits;

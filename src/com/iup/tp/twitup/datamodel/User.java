@@ -209,7 +209,7 @@ public class User {
 		Image newImg = image.getScaledInstance(120, 120, java.awt.Image.SCALE_SMOOTH);
 		imageAvatar = new ImageIcon(newImg);
 		
-		Object utilisateur[] = {this.getName(),this.getUserTag(),imageAvatar, "S'abonner"};
+		Object[] utilisateur = {this.getName(),this.getUserTag(),imageAvatar, "S'abonner"};
 		return utilisateur;
 	}
 

@@ -28,10 +28,10 @@ public class UserController {
 	
 	public Object[][] listUser(){
 		List<User> liste = mDatabase.getUsers().stream().collect(Collectors.toList());
-		Object listeUser[][] = new Object[liste.size()][];
+		Object[][] listeUser = new Object[liste.size()][];
 		
 		for(int i = 0; i < liste.size(); i++) {
-			Object table[] = liste.get(i).toRow();
+			Object[] table = liste.get(i).toRow();
 			listeUser[i] = table;
 			boolean abonne = this.mConnecte.getFollows().contains(table[1]);
 			if(abonne) {
