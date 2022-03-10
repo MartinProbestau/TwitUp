@@ -53,7 +53,7 @@ public class ButtonEditor extends DefaultCellEditor {
     	}else {
     		value = "S'abonner";
     	}
-	    label = (value == null) ? "" : value.toString();
+	    label = value.toString();
 	    button.setText(label);
 	    this.tag = table.getValueAt(row, 1).toString();
 	    isPushed = true;
