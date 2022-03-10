@@ -1,7 +1,5 @@
 package com.iup.tp.twitup.datamodel;
 
-import com.iup.tp.twitup.core.EntityManager;
-
 public class DatabaseObserver implements IDatabaseObserver {
 	
 	@Override

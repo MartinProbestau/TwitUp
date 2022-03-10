@@ -6,7 +6,12 @@ import javax.swing.text.PlainDocument;
 
 public class LimitField extends PlainDocument 
 {
-   private int max;
+   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	private int max;
    public LimitField(int max) {
       super();
       this.max = max;

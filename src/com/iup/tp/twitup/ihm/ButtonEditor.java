@@ -9,11 +9,15 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
-import javax.swing.SwingUtilities;
 
 import com.iup.tp.twitup.controller.UserController;
 
 public class ButtonEditor extends DefaultCellEditor {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	protected JButton button;
 
 	  private String label;
@@ -24,16 +28,9 @@ public class ButtonEditor extends DefaultCellEditor {
 	  
 	  private String tag;
 	  
-	  private JTable table;
-	  
-	  private String abonner;
-	  
-	  private String desabonner = "Se désabonner";
-	  
 	  public ButtonEditor(JCheckBox checkBox, UserController userController) {
 	    super(checkBox);
 	    button = new JButton();
-	    button.setOpaque(true);
 	    this.userController = userController;
 	    button.addActionListener(new ActionListener() {
 	      public void actionPerformed(ActionEvent e) {
@@ -51,6 +48,11 @@ public class ButtonEditor extends DefaultCellEditor {
 	      button.setForeground(table.getForeground());
 	      button.setBackground(table.getBackground());
 	    }
+	    if(value.equals("S'abonner")) {
+    		value = "Se désabonner";
+    	}else {
+    		value = "S'abonner";
+    	}
 	    label = (value == null) ? "" : value.toString();
 	    button.setText(label);
 	    this.tag = table.getValueAt(row, 1).toString();

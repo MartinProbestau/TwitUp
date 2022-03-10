@@ -35,6 +35,11 @@ import com.iup.tp.twitup.datamodel.User;
 
 public class UserView extends JMenu {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private JFrame mFrame;
 	
 	private JPanel jPanel;
@@ -117,7 +122,12 @@ public class UserView extends JMenu {
 				Object[][] data = UserView.this.userController.listUser();
 				DefaultTableModel model = new DefaultTableModel(data,col);
 		        JTable table = new JTable(model) {
-		        	public Class getColumnClass(int colonne) {
+		        	/**
+					 * 
+					 */
+					private static final long serialVersionUID = 1L;
+
+					public Class getColumnClass(int colonne) {
 		        		return getValueAt(2, colonne).getClass();
 		        	}
 		        };
@@ -206,7 +216,7 @@ public class UserView extends JMenu {
 					@Override
 					public void actionPerformed(ActionEvent arg0) {
 						Optional<User> user = userController.connecter(labelTag.getText(),labelPass.getText(), menuConnecte, menuDeconnecte);
-						if(labelTag.getText().equals("")||labelPass.getText().equals("")) {
+						if(labelTag.getText().equals(null)||labelPass.getText().equals(null)||labelTag.getText().equals("")||labelPass.getText().equals("")) {
 				        	Icon image = new ImageIcon("src\\resources\\images\\logoIUP_50.jpg");
 							JOptionPane.showMessageDialog(mFrame, "Veuillez saisir votre nom d'utilisateur / mot de passe", null, 0, image);
 						}
@@ -279,7 +289,7 @@ public class UserView extends JMenu {
 				button.addActionListener(new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent arg0) {
-						if(labelName.getText().equals("")||labelTag.getText().equals("")) {
+						if(labelName.getText().equals(null)||labelTag.getText().equals(null)||labelName.getText().equals("")||labelTag.getText().equals("")) {
 				        	Icon image = new ImageIcon("src\\resources\\images\\logoIUP_50.jpg");
 							JOptionPane.showMessageDialog(mFrame, "Veuillez saisir le tag et le nom d'utilisateur", null, 0, image);
 						}

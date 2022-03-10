@@ -221,6 +221,11 @@ public class Twit {
 	}
 
 	public Object[] toRow() {
+		
+		// Supprime les # du text
+		String texteTwit = this.mText;
+		texteTwit = texteTwit.replaceAll("(?i)[#][a-z]+", "");
+		
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd MMMM yyyy  'à' HH:mm:ss", Locale.FRENCH);
 		String date = simpleDateFormat.format(new Date(this.getEmissionDate())); 
 		Set<String> listeTag = this.getTags();
@@ -232,9 +237,9 @@ public class Twit {
 		Object twit[] = new Object[1];
 		
 		if(tag.equals("")) {
-			twit[0] = "<html><p>"+this.getText()+"</p><br><p>"+this.mTwiter.getUserTag()+" @"+this.mTwiter.getUserTag()+"</p><p> -- "+date+" -- </p></html>";
+			twit[0] = "<html><p>"+texteTwit+"</p><br><p>"+this.mTwiter.getUserTag()+" @"+this.mTwiter.getUserTag()+"</p><p> -- "+date+" -- </p></html>";
 		}else {
-			twit[0] = "<html><p>"+this.getText()+"</p><br><p>"+this.mTwiter.getName()+" @"+this.mTwiter.getUserTag()+"</p><p>"+tag+"</p><p> -- "+date+" -- </p></html>";
+			twit[0] = "<html><p>"+texteTwit+"</p><br><p>"+this.mTwiter.getName()+" @"+this.mTwiter.getUserTag()+"</p><p>"+tag+"</p><p> -- "+date+" -- </p></html>";
 		}
 		return twit;
 	}
