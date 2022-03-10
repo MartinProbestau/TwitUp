@@ -3,21 +3,21 @@ package com.iup.tp.twitup.datamodel;
 import java.util.Set;
 
 /**
- * Interface de la base de données de l'application.
+ * Interface de la base de donnees de l'application.
  * 
  * @author S.Lucas
  */
 public interface IDatabase {
 
 	/**
-	 * Ajoute un observateur sur les modifications de la base de données.
+	 * Ajoute un observateur sur les modifications de la base de donnees.
 	 * 
 	 * @param observer
 	 */
 	void addObserver(IDatabaseObserver observer);
 
 	/**
-	 * Supprime un observateur sur les modifications de la base de données.
+	 * Supprime un observateur sur les modifications de la base de donnees.
 	 * 
 	 * @param observer
 	 */
@@ -34,65 +34,65 @@ public interface IDatabase {
 	Set<Twit> getTwits();
 
 	/**
-	 * Ajoute un twit à la base de données.
+	 * Ajoute un twit à la base de donnees.
 	 * 
 	 * @param twitToAdd
 	 */
 	void addTwit(Twit twitToAdd);
 
 	/**
-	 * Supprime un twit de la base de données.
+	 * Supprime un twit de la base de donnees.
 	 * 
 	 * @param twitToRemove
 	 */
 	void removeTwit(Twit twitToRemove);
 
 	/**
-	 * Modification d'un twit de la base de données. <br/>
-	 * <i>Normalement peu probable qu'un twit soit modifié...</i>
+	 * Modification d'un twit de la base de donnees. <br/>
+	 * <i>Normalement peu probable qu'un twit soit modifie...</i>
 	 * 
 	 * @param twitToModify
 	 */
 	void modifiyTwit(Twit twitToModify);
 
 	/**
-	 * Ajoute un utilisateur à la base de données.
+	 * Ajoute un utilisateur à la base de donnees.
 	 * 
 	 * @param userToAdd
 	 */
 	void addUser(User userToAdd);
 
 	/**
-	 * Supprime un utilisateur de la base de données.
+	 * Supprime un utilisateur de la base de donnees.
 	 * 
 	 * @param userToRemove
 	 */
 	void removeUser(User userToRemove);
 
 	/**
-	 * Modification d'un utilisateur de la base de données.
+	 * Modification d'un utilisateur de la base de donnees.
 	 * 
 	 * @param userToModify
 	 */
 	void modifiyUser(User userToModify);
 
 	/**
-	 * Supprime l'intégralité des twits enregistrés.
+	 * Supprime l'integralite des twits enregistres.
 	 */
 	void clearTwits();
 
 	/**
-	 * Supprime l'intégralité des utilisateurs enregistrés.
+	 * Supprime l'integralite des utilisateurs enregistres.
 	 */
 	void clearUsers();
 
 	/**
-	 * Supprime l'intégralité des données.
+	 * Supprime l'integralite des donnees.
 	 */
 	void clear();
 
 	/**
-	 * Retourne tous les Twits présents en base ayant le tag donné
+	 * Retourne tous les Twits presents en base ayant le tag donne
 	 * 
 	 * @param tag
 	 *            , tag à rechercher.
@@ -100,7 +100,7 @@ public interface IDatabase {
 	Set<Twit> getTwitsWithTag(String tag);
 
 	/**
-	 * Retourne tous les Twits présents en base ayant le tag utilisateur donné
+	 * Retourne tous les Twits presents en base ayant le tag utilisateur donne
 	 * 
 	 * @param userTag
 	 *            , tag utilisateur à rechercher.
@@ -116,7 +116,7 @@ public interface IDatabase {
 	Set<Twit> getUserTwits(User user);
 
 	/**
-	 * Retourne tous les utilisateurs suivant l'utilisateur donnée
+	 * Retourne tous les utilisateurs suivant l'utilisateur donnee
 	 * 
 	 * @param user
 	 *            , utilisateur dont les followers sont à rechercher.
@@ -124,7 +124,7 @@ public interface IDatabase {
 	Set<User> getFollowers(User user);
 
 	/**
-	 * Retourne le nombre de followers pour l'utilisateur donné.
+	 * Retourne le nombre de followers pour l'utilisateur donne.
 	 * 
 	 * @param user
 	 *            , utilisateur dont le nombre de followers est à rechercher.
@@ -132,7 +132,7 @@ public interface IDatabase {
 	int getFollowersCount(User user);
 
 	/**
-	 * Retourne l'utilisateur inconnu du système.
+	 * Retourne l'utilisateur inconnu du systeme.
 	 */
 	public User getUnknowUser();
 

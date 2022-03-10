@@ -13,13 +13,13 @@ import java.nio.channels.FileChannel;
  */
 public class FilesUtils {
 	/**
-	 * Déplacement du fichier source vers le fichier destination.
+	 * Deplacement du fichier source vers le fichier destination.
 	 * 
 	 * @param sourceFileName
 	 *            , Chemin du fichier source
 	 * @param destFileName
 	 *            , Chemin du fichier de destination
-	 * @return un booléen indiquant si le déplacement s'est déroulé avec succès.
+	 * @return un booleen indiquant si le deplacement s'est deroule avec succes.
 	 */
 	public static boolean moveFile(File sourceFile, String destFileName) {
 		boolean isOk = false;
@@ -36,13 +36,13 @@ public class FilesUtils {
 	}
 
 	/**
-	 * Déplacement du fichier source vers le fichier destination.
+	 * Deplacement du fichier source vers le fichier destination.
 	 * 
 	 * @param sourceFileName
 	 *            , Chemin du fichier source
 	 * @param destFileName
 	 *            , Chemin du fichier de destination
-	 * @return un booléen indiquant si la copie s'est déroulée avec succ�s.
+	 * @return un booleen indiquant si la copie s'est deroulee avec succ�s.
 	 */
 	public static boolean copyFile(String sourceFileName, String destFileName) {
 		boolean isOk = false;

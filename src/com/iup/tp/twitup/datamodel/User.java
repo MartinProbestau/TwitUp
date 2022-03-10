@@ -9,7 +9,7 @@ import java.util.UUID;
 import javax.swing.ImageIcon;
 
 /**
- * Classe du modèle représentant un utilisateur.
+ * Classe du modele representant un utilisateur.
  * 
  * @author S.Lucas
  */
@@ -21,7 +21,7 @@ public class User {
 
 	/**
 	 * Tag non modifiable correspondant à l'utilisateur. <br/>
-	 * <i>Doit être unique dans le système</i>
+	 * <i>Doit etre unique dans le systeme</i>
 	 */
 	protected final String mUserTag;
 
@@ -41,7 +41,7 @@ public class User {
 	protected final Set<String> mFollows;
 
 	/**
-	 * Chemin d'accès à l'image de l'avatar de l'utilisateur.
+	 * Chemin d'acces à l'image de l'avatar de l'utilisateur.
 	 */
 	protected String mAvatarPath;
 
@@ -57,7 +57,7 @@ public class User {
 	 * @param follows
 	 *            , Liste des tags suivis.
 	 * @param avatarPath
-	 *            , Chemin d'accès à l'image de l'avatar.
+	 *            , Chemin d'acces à l'image de l'avatar.
 	 */
 	public User(UUID uuid, String userTag, String userPassword, String name, Set<String> follows, String avatarPath) {
 		mUuid = uuid;
@@ -115,10 +115,10 @@ public class User {
 	}
 
 	/**
-	 * Retourne la liste clonée des tag suivis par l'utilsateur.
+	 * Retourne la liste clonee des tag suivis par l'utilsateur.
 	 */
 	public Set<String> getFollows() {
-		// Clonage pour éviter les modifications exterieures
+		// Clonage pour eviter les modifications exterieures
 		return new HashSet<String>(this.mFollows);
 	}
 
@@ -143,14 +143,14 @@ public class User {
 	}
 
 	/**
-	 * Retourne le chemin d'accès au fichier de l'avatar de l'utilisateur.
+	 * Retourne le chemin d'acces au fichier de l'avatar de l'utilisateur.
 	 */
 	public String getAvatarPath() {
 		return this.mAvatarPath;
 	}
 
 	/**
-	 * Assigne le chemin d'accès au fichier de l'avatar de l'utilisateur.
+	 * Assigne le chemin d'acces au fichier de l'avatar de l'utilisateur.
 	 * 
 	 * @param avatarPath
 	 */
@@ -159,7 +159,7 @@ public class User {
 	}
 
 	/**
-	 * Indique si l'utilisateur suit l'utilisateur donné.
+	 * Indique si l'utilisateur suit l'utilisateur donne.
 	 */
 	public boolean isFollowing(User userToCheck) {
 		return this.getFollows().contains(userToCheck.getUserTag());

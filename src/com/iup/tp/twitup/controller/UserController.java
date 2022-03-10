@@ -13,7 +13,7 @@ import com.iup.tp.twitup.ihm.ConnexionUtil;
 public class UserController {
 
 	/**
-	 * Base de donénes de l'application.
+	 * Base de donenes de l'application.
 	 */
 	protected IDatabase mDatabase;
 
@@ -35,7 +35,7 @@ public class UserController {
 			listeUser[i] = table;
 			boolean abonne = this.mConnecte.getFollows().contains(table[1]);
 			if(abonne) {
-				table[3] = "Se désabonner";
+				table[3] = "Se desabonner";
 			}
 		}
 		return listeUser;
@@ -74,11 +74,11 @@ public class UserController {
 		if(!this.isAbonne(tag)) {
 			this.mConnecte.addFollowing(tag);
 			mEntityManager.sendUser(getUserConnecte());
-			return "Vous vous êtes abonné, veuillez raffraîchir la page.";
+			return "Vous vous etes abonne.";
 		}
 		this.mConnecte.removeFollowing(tag);
 		mEntityManager.sendUser(getUserConnecte());
-		return "Vous vous êtes désabonné, veuillez raffraîchir la page.";
+		return "Vous vous etes desabonne.";
 	}
 	
 	public boolean isAbonne(String tag) {

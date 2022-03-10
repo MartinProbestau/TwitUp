@@ -20,7 +20,7 @@ import com.iup.tp.twitup.datamodel.jaxb.bean.user.UserXml;
 public class XmlbeanDatamodelConverter {
 
 	/**
-	 * Conversion du modèle de donnée vers le bean du fichier XML.
+	 * Conversion du modele de donnee vers le bean du fichier XML.
 	 * 
 	 * @param twitToConvert
 	 */
@@ -35,19 +35,19 @@ public class XmlbeanDatamodelConverter {
 	}
 
 	/**
-	 * Conversion du fichier XML vers le modèle de donnée.<br/>
+	 * Conversion du fichier XML vers le modele de donnee.<br/>
 	 * <i>NB, La map doit au moins contenir l'utilisateur inconnu</i>
 	 * 
 	 * @param twitToConvert
 	 *            , Twit à convertir.
 	 * @param userMap
-	 *            , Map contenant les utilisateurs enregistrés en fonction de
+	 *            , Map contenant les utilisateurs enregistres en fonction de
 	 *            leur UUID.
 	 */
 	public static Twit convertAsModelTwit(TwitXml twitToConvert, Map<UUID, User> userMap) {
 		UUID twitUuid = UUID.fromString(twitToConvert.getID());
 
-		// Récupération de l'utilisateur source du twit
+		// Recuperation de l'utilisateur source du twit
 		User twitUser = userMap.get(UUID.fromString(twitToConvert.getTwiter()));
 		if (twitUser == null) {
 			twitUser = userMap.get(Constants.UNKNONWN_USER_UUID);
@@ -57,7 +57,7 @@ public class XmlbeanDatamodelConverter {
 	}
 
 	/**
-	 * Conversion du modèle de donnée vers le bean du fichier XML.
+	 * Conversion du modele de donnee vers le bean du fichier XML.
 	 * 
 	 * @param userToConvert
 	 */
@@ -77,7 +77,7 @@ public class XmlbeanDatamodelConverter {
 	}
 
 	/**
-	 * Conversion du fichier XML vers le modèle de donnée.
+	 * Conversion du fichier XML vers le modele de donnee.
 	 * 
 	 * @param userToConvert
 	 */

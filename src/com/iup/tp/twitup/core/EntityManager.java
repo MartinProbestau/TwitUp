@@ -19,7 +19,7 @@ import com.iup.tp.twitup.datamodel.jaxb.bean.user.UserXml;
 import com.iup.tp.twitup.events.file.IWatchableDirectoryObserver;
 
 /**
- * Classe de gestion de la mise à jour de la base de données et de génération
+ * Classe de gestion de la mise à jour de la base de donnees et de generation
  * des fichiers
  * 
  * @author S.Lucas
@@ -27,27 +27,27 @@ import com.iup.tp.twitup.events.file.IWatchableDirectoryObserver;
 public class EntityManager implements IWatchableDirectoryObserver {
 
 	/**
-	 * Base de donnée de l'application.
+	 * Base de donnee de l'application.
 	 */
 	protected final IDatabase mDatabase;
 
 	/**
-	 * Chemin d'accès au répertoire d'échange.
+	 * Chemin d'acces au repertoire d'echange.
 	 */
 	protected String mDirectoryPath;
 
 	/**
-	 * Map reliant les UUID aux utilisateurs associés.
+	 * Map reliant les UUID aux utilisateurs associes.
 	 */
 	protected final Map<UUID, User> mUserMap;
 
 	/**
-	 * Map reliant les noms de fichiers aux twits associés.
+	 * Map reliant les noms de fichiers aux twits associes.
 	 */
 	protected final Map<String, Twit> mTwitFileMap;
 
 	/**
-	 * Map reliant les noms de fichiers aux utilisateurs associés.
+	 * Map reliant les noms de fichiers aux utilisateurs associes.
 	 */
 	protected final Map<String, User> mUserFileMap;
 
@@ -80,8 +80,8 @@ public class EntityManager implements IWatchableDirectoryObserver {
 	@Override
 	public void notifyNewFiles(Set<File> newFiles) {
 		//
-		// Récupération des fichiers utilisateurs en premier
-		// (nécessaires pour gérer les twits)
+		// Recuperation des fichiers utilisateurs en premier
+		// (necessaires pour gerer les twits)
 		Set<File> userFiles = this.getUserFiles(newFiles);
 
 		// Parcours de la liste des fichiers utilisateurs
@@ -101,7 +101,7 @@ public class EntityManager implements IWatchableDirectoryObserver {
 		}
 
 		//
-		// Récupération des fichiers de Twits.
+		// Recuperation des fichiers de Twits.
 		Set<File> twitFiles = this.getTwitFiles(newFiles);
 
 		// Parcours de la liste des nouveaux twits
@@ -126,13 +126,13 @@ public class EntityManager implements IWatchableDirectoryObserver {
 	@Override
 	public void notifyDeletedFiles(Set<File> deletedFiles) {
 		//
-		// Récupération des fichiers d'utilisateurs
+		// Recuperation des fichiers d'utilisateurs
 		Set<File> userFiles = this.getUserFiles(deletedFiles);
 
-		// Parcours de la liste des fichiers utilisateurs supprimés
+		// Parcours de la liste des fichiers utilisateurs supprimes
 		for (File deletedUserFile : userFiles) {
 
-			// Récupération de l'utilisateur correspondant
+			// Recuperation de l'utilisateur correspondant
 			User deletedUser = this.mUserFileMap.get(deletedUserFile.getName());
 
 			if (deletedUser != null) {
@@ -146,13 +146,13 @@ public class EntityManager implements IWatchableDirectoryObserver {
 		}
 
 		//
-		// Récupération des fichiers twit supprimés
+		// Recuperation des fichiers twit supprimes
 		Set<File> deletedTwitFiles = this.getTwitFiles(deletedFiles);
 
-		// Parcours de la liste des fichiers twit supprimés
+		// Parcours de la liste des fichiers twit supprimes
 		for (File deletedTwitFile : deletedTwitFiles) {
 
-			// Récupération du twit correspondant
+			// Recuperation du twit correspondant
 			Twit deletedTwit = this.mTwitFileMap.get(deletedTwitFile.getName());
 
 			if (deletedTwit != null) {
@@ -171,12 +171,12 @@ public class EntityManager implements IWatchableDirectoryObserver {
 	@Override
 	public void notifyModifiedFiles(Set<File> modifiedFiles) {
 		//
-		// Récupération des utilisateurs en premier (nécessaires pour gérer
+		// Recuperation des utilisateurs en premier (necessaires pour gerer
 		// les
 		// twit)
 		Set<File> userFiles = this.getUserFiles(modifiedFiles);
 
-		// Récupération et parcours de la liste des utilisateurs modifiés
+		// Recuperation et parcours de la liste des utilisateurs modifies
 		for (User modifiedUser : this.extractAllUsers(userFiles)) {
 			// Modification de l'utilisateur
 			this.mDatabase.modifiyUser(modifiedUser);
@@ -186,10 +186,10 @@ public class EntityManager implements IWatchableDirectoryObserver {
 		}
 
 		//
-		// Récupération des Twit.
+		// Recuperation des Twit.
 		Set<File> twitFiles = this.getTwitFiles(modifiedFiles);
 
-		// Récupération et parcours de la liste des twits modifiés
+		// Recuperation et parcours de la liste des twits modifies
 		for (Twit modifiedTwit : this.extractAllTwits(twitFiles)) {
 			// Ajout du twit
 			this.mDatabase.modifiyTwit(modifiedTwit);
@@ -210,7 +210,7 @@ public class EntityManager implements IWatchableDirectoryObserver {
 			// Extraction du twit pour le fichier courant
 			Twit twit = this.extractTwit(twitFile);
 
-			// Si le twit a bien été récupéré
+			// Si le twit a bien ete recupere
 			if (twit != null) {
 				// Sauvegarde de l'objet
 				allTwits.add(twit);
@@ -221,8 +221,8 @@ public class EntityManager implements IWatchableDirectoryObserver {
 	}
 
 	/**
-	 * Extraction du fichier pour récupérer le Twit correspondant. <br/>
-	 * <i>Retourne <code>null</code> si un problème est rencontré</i>.
+	 * Extraction du fichier pour recuperer le Twit correspondant. <br/>
+	 * <i>Retourne <code>null</code> si un probleme est rencontre</i>.
 	 * 
 	 * @param twitFile
 	 *            , Fichier XML du twit à ectraire.
@@ -232,12 +232,12 @@ public class EntityManager implements IWatchableDirectoryObserver {
 
 		// Si le fichier est valide
 		if (twitFile != null && twitFile.exists() && twitFile.getName().endsWith(Constants.TWIT_FILE_EXTENSION)) {
-			// Lecture du fichier pour récupérer le bean xml
+			// Lecture du fichier pour recuperer le bean xml
 			TwitXml xmlTwit = JaxbReader.readTwit(twitFile.getAbsolutePath());
 
-			// Si le fichier a bien été lu
+			// Si le fichier a bien ete lu
 			if (xmlTwit != null) {
-				// Conversion vers l'objet du modèle
+				// Conversion vers l'objet du modele
 				newTwit = XmlbeanDatamodelConverter.convertAsModelTwit(xmlTwit, mUserMap);
 			}
 		}
@@ -259,7 +259,7 @@ public class EntityManager implements IWatchableDirectoryObserver {
 			// Extraction de l'utilisateur pour le fichier courant
 			User user = this.extractUser(userFile);
 
-			// Si l'utilisateur a bien été récupéré
+			// Si l'utilisateur a bien ete recupere
 			if (user != null) {
 				// Sauvegarde de l'objet
 				allUsers.add(user);
@@ -270,8 +270,8 @@ public class EntityManager implements IWatchableDirectoryObserver {
 	}
 
 	/**
-	 * Extraction du fichier pour récupérer l'utilisateur correspondant. <br/>
-	 * <i>Retourne <code>null</code> si un problème est rencontré</i>.
+	 * Extraction du fichier pour recuperer l'utilisateur correspondant. <br/>
+	 * <i>Retourne <code>null</code> si un probleme est rencontre</i>.
 	 * 
 	 * @param userFile
 	 *            , Fichier XML de l'utilisateur à ectraire.
@@ -281,12 +281,12 @@ public class EntityManager implements IWatchableDirectoryObserver {
 
 		// Si le fichier est valide
 		if (userFile != null && userFile.exists() && userFile.getName().endsWith(Constants.USER_FILE_EXTENSION)) {
-			// Lecture du fichier pour récupérer le bean xml
+			// Lecture du fichier pour recuperer le bean xml
 			UserXml xmlUser = JaxbReader.readUser(userFile.getAbsolutePath());
 
-			// Si le fichier a bien été lu
+			// Si le fichier a bien ete lu
 			if (xmlUser != null) {
-				// Conversion vers l'objet du modèle
+				// Conversion vers l'objet du modele
 				newUser = XmlbeanDatamodelConverter.convertAsModelUser(xmlUser);
 			}
 		}
@@ -296,10 +296,10 @@ public class EntityManager implements IWatchableDirectoryObserver {
 
 	/**
 	 * Retourne la liste des fichiers de type 'Utilisateur' parmis la liste des
-	 * fichiers donnés.
+	 * fichiers donnes.
 	 * 
 	 * @param allFiles
-	 *            , Liste complète des fichiers.
+	 *            , Liste complete des fichiers.
 	 */
 	protected Set<File> getUserFiles(Set<File> allFiles) {
 		return this.getSpecificFiles(allFiles, Constants.USER_FILE_EXTENSION);
@@ -307,28 +307,28 @@ public class EntityManager implements IWatchableDirectoryObserver {
 
 	/**
 	 * Retourne la liste des fichiers de type 'Twit' parmis la liste des
-	 * fichiers donnés.
+	 * fichiers donnes.
 	 * 
 	 * @param allFiles
-	 *            , Liste complète des fichiers.
+	 *            , Liste complete des fichiers.
 	 */
 	protected Set<File> getTwitFiles(Set<File> allFiles) {
 		return this.getSpecificFiles(allFiles, Constants.TWIT_FILE_EXTENSION);
 	}
 
 	/**
-	 * Retourne la liste des fichiers ayant une extension particulière parmis la
-	 * liste des fichiers donnés.
+	 * Retourne la liste des fichiers ayant une extension particuliere parmis la
+	 * liste des fichiers donnes.
 	 * 
 	 * @param allFiles
-	 *            , Liste complète des fichiers.
+	 *            , Liste complete des fichiers.
 	 * @param extension
-	 *            , Extension des fichiers à récupérer.
+	 *            , Extension des fichiers à recuperer.
 	 */
 	protected Set<File> getSpecificFiles(Set<File> allFiles, String extension) {
 		Set<File> specificFiles = new HashSet<File>();
 
-		// Parcours de tous les fichiers donnés
+		// Parcours de tous les fichiers donnes
 		for (File file : allFiles) {
 			// Si le fichier est un fichier ayant l'extension voulue
 			if (file.getName().endsWith(extension)) {
@@ -340,7 +340,7 @@ public class EntityManager implements IWatchableDirectoryObserver {
 	}
 
 	/**
-	 * Configure le chemin d'accès au répertoire d'échange.
+	 * Configure le chemin d'acces au repertoire d'echange.
 	 * 
 	 * @param directoryPath
 	 */
@@ -349,45 +349,45 @@ public class EntityManager implements IWatchableDirectoryObserver {
 	}
 
 	/**
-	 * Génération du fichier correspondant au twit.
+	 * Generation du fichier correspondant au twit.
 	 * 
 	 * @param twit
 	 */
 	public void sendTwit(Twit twit) {
 		if (mDirectoryPath != null) {
-			// Récupération du chemin pour le fichier à générer
+			// Recuperation du chemin pour le fichier à generer
 			String twitFileName = this.getFileName(twit.getUuid(), Constants.TWIT_FILE_EXTENSION);
 
 			// Conversion en structure XML
 			TwitXml xmlTwit = XmlbeanDatamodelConverter.convertAsXmlTwit(twit);
 
-			// Génération du fichier XML
+			// Generation du fichier XML
 			JaxbWriter.writeTwitFile(xmlTwit, twitFileName);
 		} else {
-			throw new RuntimeException("Le répertoire d'échange n'est pas configuré");
+			throw new RuntimeException("Le repertoire d'echange n'est pas configure");
 		}
 	}
 
 	/**
-	 * Génération du fichier correspondant à l'utilisateur.
+	 * Generation du fichier correspondant à l'utilisateur.
 	 * 
 	 * @param user
 	 */
 	public void sendUser(User user) {
 		if (mDirectoryPath != null) {
-			// Récupération du chemin pour le fichier à générer
+			// Recuperation du chemin pour le fichier à generer
 			String userFileName = this.getFileName(user.getUuid(), Constants.USER_FILE_EXTENSION);
 
 			// Conversion en structure XML
 			UserXml xmlUser = XmlbeanDatamodelConverter.convertAsXmlUser(user);
 
-			// Génération du fichier XML
+			// Generation du fichier XML
 			JaxbWriter.writeUserFile(xmlUser, userFileName);
 		}
 	}
 
 	/**
-	 * Retourne un chemin d'accès au fichier pour l'uuid et l'extension donnés.
+	 * Retourne un chemin d'acces au fichier pour l'uuid et l'extension donnes.
 	 * 
 	 * @param objectUuid
 	 * @param fileExtension

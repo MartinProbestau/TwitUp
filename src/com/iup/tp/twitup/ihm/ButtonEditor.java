@@ -49,7 +49,7 @@ public class ButtonEditor extends DefaultCellEditor {
 	      button.setBackground(table.getBackground());
 	    }
 	    if(value.equals("S'abonner")) {
-    		value = "Se désabonner";
+    		value = "Se desabonner";
     	}else {
     		value = "S'abonner";
     	}

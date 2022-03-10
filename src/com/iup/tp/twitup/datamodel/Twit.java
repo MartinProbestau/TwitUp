@@ -10,7 +10,7 @@ import java.util.UUID;
 import com.iup.tp.twitup.common.Constants;
 
 /**
- * Classe du modèle représentant un twit.
+ * Classe du modele representant un twit.
  * 
  * @author S.Lucas
  */
@@ -26,7 +26,7 @@ public class Twit {
 	protected final User mTwiter;
 
 	/**
-	 * Date d'émission du twit.
+	 * Date d'emission du twit.
 	 */
 	protected final long mEmissionDate;
 
@@ -36,12 +36,12 @@ public class Twit {
 	protected final String mText;
 
 	/**
-	 * Liste des tags représentant un utilisateur présent dans le twit.
+	 * Liste des tags representant un utilisateur present dans le twit.
 	 */
 	protected final Set<String> mUserTags;
 
 	/**
-	 * Liste des tags présent dans le twit.
+	 * Liste des tags present dans le twit.
 	 */
 	protected final Set<String> mTags;
 
@@ -60,7 +60,7 @@ public class Twit {
 	 * 
 	 * @param twitUuid     , identifiant du twit.
 	 * @param twiter       , utilisateur à l'origine du twit.
-	 * @param emissionDate , date d'émission du twit.
+	 * @param emissionDate , date d'emission du twit.
 	 * @param text         , corps du message.
 	 */
 	public Twit(UUID twitUuid, User twiter, long emissionDate, String text) {
@@ -76,7 +76,7 @@ public class Twit {
 	}
 
 	/**
-	 * Initialisation de la liste de tags présents dans le corps du message.
+	 * Initialisation de la liste de tags presents dans le corps du message.
 	 */
 	protected void initTags(String text) {
 		if (text != null) {
@@ -89,33 +89,33 @@ public class Twit {
 	}
 
 	/**
-	 * Retourne les tags présents dans le texte en fonction du caractère de
-	 * détection.
+	 * Retourne les tags presents dans le texte en fonction du caractere de
+	 * detection.
 	 * 
 	 * @param text         , Texte à analyser.
-	 * @param tagDelimiter , Caractère de délimitation des tags à rechercher.
+	 * @param tagDelimiter , Caractere de delimitation des tags à rechercher.
 	 */
 	protected Set<String> extractTags(String text, String tagDelimiter) {
 		Set<String> tags = new HashSet<String>();
 
-		// Ajout d'un caractère spécial pour reconnaitre les éléments
-		// réellement
-		// taggé
+		// Ajout d'un caractere special pour reconnaitre les elements
+		// reellement
+		// tagge
 		String specialChar = "~";
 		String replacedText = text.replace(tagDelimiter, tagDelimiter + specialChar);
 
-		// Découpage en foncion du délimiteur.
+		// Decoupage en foncion du delimiteur.
 		String[] taggedStrings = replacedText.split(tagDelimiter);
 
-		// Parcours de tous les groupes récupérés
+		// Parcours de tous les groupes recuperes
 		for (String taggedString : taggedStrings) {
-			// Si la chaine courante commencait bien par le délimiteur
+			// Si la chaine courante commencait bien par le delimiteur
 			if (taggedString.startsWith(specialChar)) {
-				// Récupération du tag (du délimiteur jusqu'au premier
+				// Recuperation du tag (du delimiteur jusqu'au premier
 				// espace)
 				String newTag = taggedString.split(" ")[0];
 
-				// Suppression du caractère sp�cial
+				// Suppression du caractere sp�cial
 				newTag = newTag.substring(1, newTag.length());
 
 				// Ajout du tag à la liste
@@ -148,15 +148,15 @@ public class Twit {
 	}
 
 	/**
-	 * Retourne la date d'émission.
+	 * Retourne la date d'emission.
 	 */
 	public long getEmissionDate() {
 		return this.mEmissionDate;
 	}
 
 	/**
-	 * Retourne une liste clonée des tags du twit. <br/>
-	 * <i> Les tags sont les mots du twit précédés par la
+	 * Retourne une liste clonee des tags du twit. <br/>
+	 * <i> Les tags sont les mots du twit precedes par la
 	 * {@link Constants#WORD_TAG_DELIMITER}</i>
 	 */
 	public Set<String> getTags() {
@@ -164,8 +164,8 @@ public class Twit {
 	}
 
 	/**
-	 * Retourne une liste clonée des tags du twit représentant un utilisateur. <br/>
-	 * <i> Les tags utilisateurs sont les mots du twit précédés par la
+	 * Retourne une liste clonee des tags du twit representant un utilisateur. <br/>
+	 * <i> Les tags utilisateurs sont les mots du twit precedes par la
 	 * {@link Constants#USER_TAG_DELIMITER}</i>
 	 */
 	public Set<String> getUserTags() {
@@ -173,7 +173,7 @@ public class Twit {
 	}
 
 	/**
-	 * Indique si le Twit possède le tag donné.
+	 * Indique si le Twit possede le tag donne.
 	 * 
 	 * @param aTag , tag à rechercher.
 	 */
@@ -182,7 +182,7 @@ public class Twit {
 	}
 
 	/**
-	 * Indique si le Twit possède le tag utilisateur donné.
+	 * Indique si le Twit possede le tag utilisateur donne.
 	 * 
 	 * @param anUserTag , tag utilisateur à rechercher.
 	 */
@@ -224,7 +224,7 @@ public class Twit {
 		
 		// Supprime les # du text
 		String texteTwit = this.mText;
-		texteTwit = texteTwit.replaceAll("(?i)[#][a-z]+", "");
+		texteTwit = texteTwit.replaceAll("(?i)[#][^ ]+", "");
 		
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd MMMM yyyy  'à' HH:mm:ss", Locale.FRENCH);
 		String date = simpleDateFormat.format(new Date(this.getEmissionDate())); 

@@ -11,8 +11,6 @@ import com.iup.tp.twitup.datamodel.IDatabase;
 import com.iup.tp.twitup.datamodel.IDatabaseObserver;
 import com.iup.tp.twitup.events.file.IWatchableDirectory;
 import com.iup.tp.twitup.events.file.WatchableDirectory;
-import com.iup.tp.twitup.ihm.TwitupMainView;
-import com.iup.tp.twitup.ihm.TwitupMock;
 import com.iup.tp.twitup.model.Model;
 
 /**
@@ -23,16 +21,16 @@ import com.iup.tp.twitup.model.Model;
 public class Twitup {
 	
 	/**
-	 * Base de données.
+	 * Base de donnees.
 	 */
 	protected IDatabase mDatabase;
 	/**
-	 * Observeur de la base de données.
+	 * Observeur de la base de donnees.
 	 */
 	protected IDatabaseObserver mDatabaseObserver;
 
 	/**
-	 * Gestionnaire des entités contenu de la base de données.
+	 * Gestionnaire des entites contenu de la base de donnees.
 	 */
 	protected EntityManager mEntityManager;
 
@@ -42,17 +40,17 @@ public class Twitup {
 	protected Model model;
 
 	/**
-	 * Classe de surveillance de répertoire
+	 * Classe de surveillance de repertoire
 	 */
 	protected IWatchableDirectory mWatchableDirectory;
 
 	/**
-	 * Répertoire d'échange de l'application.
+	 * Repertoire d'echange de l'application.
 	 */
 	protected String mExchangeDirectoryPath;
 
 	/**
-	 * Idnique si le mode bouchoné est activé.
+	 * Idnique si le mode bouchone est active.
 	 */
 	protected boolean mIsMockEnabled = false;
 
@@ -68,18 +66,17 @@ public class Twitup {
 		// Init du look and feel de l'application
 		this.initLookAndFeel();
 
-		// Initialisation de la base de données
+		// Initialisation de la base de donnees
 		this.initDatabase();
 
 		if (this.mIsMockEnabled) {
 			// Initialisation du bouchon de travail
-			this.initMock();
 		}
 
 		// Initialisation de l'IHM
 		this.initGui();
 
-		// Initialisation du répertoire d'échange
+		// Initialisation du repertoire d'echange
 		this.initDirectory();
 	}
 
@@ -91,7 +88,6 @@ public class Twitup {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException
 				| UnsupportedLookAndFeelException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -100,14 +96,13 @@ public class Twitup {
 	 * Initialisation de l'interface graphique.
 	 */
 	protected void initGui() {
-		model = new Model(mDatabase, mEntityManager);
-		//mMainView.showGUI();
+		model = new Model(mDatabase, mEntityManager, this);
 	}
 
 	/**
-	 * Initialisation du répertoire d'échange (depuis la conf ou depuis un file
+	 * Initialisation du repertoire d'echange (depuis la conf ou depuis un file
 	 * chooser). <br/>
-	 * <b>Le chemin doit obligatoirement avoir été saisi et être valide avant de
+	 * <b>Le chemin doit obligatoirement avoir ete saisi et etre valide avant de
 	 * pouvoir utiliser l'application</b>
 	 */
 	protected void initDirectory() {
@@ -115,28 +110,20 @@ public class Twitup {
 	}
 
 	/**
-	 * Indique si le fichier donné est valide pour servire de répertoire
-	 * d'échange
+	 * Indique si le fichier donne est valide pour servire de repertoire
+	 * d'echange
 	 * 
 	 * @param directory
-	 *            , Répertoire à tester.
+	 *            , Repertoire à tester.
 	 */
 	protected boolean isValideExchangeDirectory(File directory) {
-		// Valide si répertoire disponible en lecture et écriture
+		// Valide si repertoire disponible en lecture et ecriture
 		return directory != null && directory.exists() && directory.isDirectory() && directory.canRead()
 				&& directory.canWrite();
 	}
 
 	/**
-	 * Initialisation du mode bouchoné de l'application
-	 */
-	protected void initMock() {
-		TwitupMock mock = new TwitupMock(this.mDatabase, this.mEntityManager);
-		mock.showGUI();
-	}
-
-	/**
-	 * Initialisation de la base de données
+	 * Initialisation de la base de donnees
 	 */
 	protected void initDatabase() {
 		mDatabase = new Database();
@@ -146,7 +133,7 @@ public class Twitup {
 	}
 
 	/**
-	 * Initialisation du répertoire d'échange.
+	 * Initialisation du repertoire d'echange.
 	 * 
 	 * @param directoryPath
 	 */

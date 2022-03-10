@@ -61,7 +61,7 @@ public class TwitView extends JMenu {
 		this.twitController = twitController;
 		Container mContent = mFrame.getContentPane();
         
-		JMenuItem jMenuItemEcrireTwit = new JMenuItem("Écrire un twit");
+		JMenuItem jMenuItemEcrireTwit = new JMenuItem("Ecrire un twit");
 		JMenuItem jMenuItemListerTwits = new JMenuItem("Rechercher des twits");
         ActionListener formSendTwit = this.getFormSendTwit(mContent);
         ActionListener formListTwit = this.getFormListdTwit(mContent);
@@ -114,7 +114,7 @@ public class TwitView extends JMenu {
 		                	if(str.contains("@") || str.contains("#")) {
 		                		sort.setRowFilter(RowFilter.regexFilter("(?i)" + str));
 		                	}else {
-		                		sort.setRowFilter(RowFilter.regexFilter("(?i)[#,@]+" + str));
+		                		sort.setRowFilter(RowFilter.regexFilter("(?i)[#|@][^ ]+" + str));
 		                	}
 		                }
 		            }
@@ -172,7 +172,7 @@ public class TwitView extends JMenu {
 				button.addActionListener(new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent arg0) {
-						if(textTwit.getText().equals(null)||textTwit.getText().equals("")) {
+						if(textTwit.getText().equals("")) {
 							JOptionPane.showMessageDialog(mFrame, "Veuillez saisir un twit", null, 0);
 						}
 						else {
@@ -180,7 +180,7 @@ public class TwitView extends JMenu {
 							System.out.println(textTwit.getText());
 							twitController.addTwit(user, textTwit.getText());
 							textTwit.setText("");
-							JOptionPane.showMessageDialog(mFrame, "Le twit est envoyé", null, 0);
+							JOptionPane.showMessageDialog(mFrame, "Le twit est envoye");
 						}
 					}
 				});

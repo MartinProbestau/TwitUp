@@ -14,8 +14,8 @@ import java.util.Properties;
  */
 public class PropertiesManager {
 	/**
-	 * Chargement des propriétés de configuration de l'application (depuis un
-	 * éventuel fichier de configuration).
+	 * Chargement des proprietes de configuration de l'application (depuis un
+	 * eventuel fichier de configuration).
 	 */
 	public static Properties loadProperties(String configurationFilePath) {
 		Properties properties = new Properties();
@@ -47,9 +47,9 @@ public class PropertiesManager {
 	 * Ecriture du fichier de configuration.
 	 * 
 	 * @param properties
-	 *            , Configurations enregistrées?§
+	 *            , Configurations enregistrees?§
 	 * @param configurationFilePath
-	 *            , Chemin du fichier de configuration à écrire.
+	 *            , Chemin du fichier de configuration à ecrire.
 	 */
 	public static void writeProperties(Properties properties, String configurationFilePath) {
 		if (properties != null) {

@@ -71,10 +71,10 @@ public class UserView extends JMenu {
         ActionListener formListUser = this.getFormListUser(mContent);
         ActionListener formConsultListener = this.getFormConsultListener(mContent);
         
-		JMenuItem jMenuItemCreerUtilisateur = new JMenuItem("Créer un utilisateur");
+		JMenuItem jMenuItemCreerUtilisateur = new JMenuItem("Creer un utilisateur");
 		JMenuItem jMenuItemListerUtilisateur = new JMenuItem("Liste des utilisateurs");
 		JMenuItem jMenuItemConnexionUtilisateur = new JMenuItem("Se connecter");
-		JMenuItem jMenuItemDeconnexionUtilisateur = new JMenuItem("Se déconnecter");
+		JMenuItem jMenuItemDeconnexionUtilisateur = new JMenuItem("Se deconnecter");
 		JMenuItem jMenuItemProfil = new JMenuItem("Profil");
 		menuDeconnecte.add(jMenuItemConnexionUtilisateur);
 		menuConnecte.add(jMenuItemProfil);
@@ -99,7 +99,7 @@ public class UserView extends JMenu {
         bAvatar.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent event){
                 JFileChooser chooser = new JFileChooser();
-                chooser.setDialogTitle("Choisir le répertoire d'échange");
+                chooser.setDialogTitle("Choisir le repertoire d'echange");
                 int returnVal = chooser.showOpenDialog(UserView.this.mFrame);
                 if(returnVal == JFileChooser.APPROVE_OPTION) {
                    System.out.println("Vous avez ouvert le fichier : " + chooser.getSelectedFile().getName());
@@ -216,13 +216,13 @@ public class UserView extends JMenu {
 					@Override
 					public void actionPerformed(ActionEvent arg0) {
 						Optional<User> user = userController.connecter(labelTag.getText(),labelPass.getText(), menuConnecte, menuDeconnecte);
-						if(labelTag.getText().equals(null)||labelPass.getText().equals(null)||labelTag.getText().equals("")||labelPass.getText().equals("")) {
+						if(labelTag.getText().equals("")||labelPass.getText().equals("")) {
 				        	Icon image = new ImageIcon("src\\resources\\images\\logoIUP_50.jpg");
 							JOptionPane.showMessageDialog(mFrame, "Veuillez saisir votre nom d'utilisateur / mot de passe", null, 0, image);
 						}
 						else if(user.isPresent()) {
 				        	Icon image = new ImageIcon("src\\resources\\images\\logoIUP_50.jpg");
-							JOptionPane.showMessageDialog(mFrame, "Vous êtes connecté !", null, 0, image);
+							JOptionPane.showMessageDialog(mFrame, "Vous etes connecte !", null, 0, image);
 							labelPass.setText("");
 							mContent.remove(jPanel);
 							jPanel.removeAll();
@@ -245,7 +245,7 @@ public class UserView extends JMenu {
         		mContent.remove(jPanel);
         		jPanel.removeAll();
         		SwingUtilities.updateComponentTreeUI(mFrame);
-        		JOptionPane.showMessageDialog(mFrame, "Vous êtes déconnecté !");
+        		JOptionPane.showMessageDialog(mFrame, "Vous etes deconnecte !");
         		ConnexionUtil.setConnection(false, menuConnecte, menuDeconnecte);
         	}
         };
@@ -289,13 +289,13 @@ public class UserView extends JMenu {
 				button.addActionListener(new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent arg0) {
-						if(labelName.getText().equals(null)||labelTag.getText().equals(null)||labelName.getText().equals("")||labelTag.getText().equals("")) {
+						if(labelName.getText().equals("")||labelTag.getText().equals("")) {
 				        	Icon image = new ImageIcon("src\\resources\\images\\logoIUP_50.jpg");
 							JOptionPane.showMessageDialog(mFrame, "Veuillez saisir le tag et le nom d'utilisateur", null, 0, image);
 						}
 						else if(userController.verification(labelTag.getText())) {
 				        	Icon image = new ImageIcon("src\\resources\\images\\logoIUP_50.jpg");
-							JOptionPane.showMessageDialog(mFrame, "Le tag est déjà utilisé par quelqu'un d'autre, veuillez en entrer un autre", null, 0, image);
+							JOptionPane.showMessageDialog(mFrame, "Le tag est dejà utilise par quelqu'un d'autre, veuillez en entrer un autre", null, 0, image);
 						}
 						else {
 							User user = new User(UUID.randomUUID(), labelTag.getText(), "azerty", labelName.getText(), new HashSet<String>(), labelAvatar.getText());
@@ -304,7 +304,7 @@ public class UserView extends JMenu {
 							labelTag.setText("");
 							labelAvatar.setText("Le chemin...");
 				        	Icon image = new ImageIcon("src\\resources\\images\\logoIUP_50.jpg");
-							JOptionPane.showMessageDialog(mFrame, "L'utilisateur est créé", null, 0, image);
+							JOptionPane.showMessageDialog(mFrame, "L'utilisateur est cree", null, 0, image);
 						}
 					}
 				});

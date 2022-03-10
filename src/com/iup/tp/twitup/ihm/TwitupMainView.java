@@ -8,6 +8,7 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +27,7 @@ import javax.swing.SwingUtilities;
 import com.iup.tp.twitup.controller.TwitController;
 import com.iup.tp.twitup.controller.UserController;
 import com.iup.tp.twitup.core.EntityManager;
+import com.iup.tp.twitup.model.Model;
 
 /**
  * Classe de la vue principale de l'application.
@@ -50,16 +52,19 @@ public class TwitupMainView {
 		protected List<Component> menuConnecte;
 		
 		protected List<Component> menuDeconnecte;
+		
+		protected Model model;
 
 		/**
 		 * Constructeur.
 		 * 
 		 * @param database
-		 *            , Base de données de l'application.
+		 *            , Base de donnees de l'application.
 		 */
-		public TwitupMainView(UserController userController, TwitController twitController) {
+		public TwitupMainView(UserController userController, TwitController twitController, Model model) {
 			this.userController = userController;
 			this.twitController = twitController;
+			this.model = model;
 			menuConnecte = new ArrayList<Component>();
 			menuDeconnecte = new ArrayList<Component>();
 		}
@@ -96,8 +101,8 @@ public class TwitupMainView {
 		 * Initialisation de l'IHM
 		 */
 		protected void initGUI() {
-			// Création de la fenetre principale
-			mFrame = new JFrame("MOCK");
+			// Creation de la fenetre principale
+			mFrame = new JFrame("TwitUp");
 			mFrame.setPreferredSize(new Dimension(800,700));
 			mFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			mFrame.setLayout(new GridBagLayout());
@@ -150,30 +155,36 @@ public class TwitupMainView {
 		private JMenuItem getMenuInform() {
 			JMenu mMenuInform = new JMenu("?");
 			JMenuItem jMenuItemAPropos = new JMenuItem("A propos");
-			ActionListener InformationListener = new ActionListener() {
+			ActionListener informationListener = new ActionListener() {
 		        public void actionPerformed(ActionEvent event) {
 		        	Icon image = new ImageIcon("src\\resources\\images\\logoIUP_50.jpg");
 					JOptionPane.showMessageDialog(mFrame, "Message", null, 0, image);
 		        }
 		      };
-			jMenuItemAPropos.addActionListener(InformationListener);
+			jMenuItemAPropos.addActionListener(informationListener);
 			mMenuInform.add(jMenuItemAPropos);
 			return mMenuInform;
 		}
 
 		private JMenu getMenuFichier() {
 			JMenu mMenu = new JMenu("Fichier");
-			JMenuItem jMenuItemEchange = new JMenuItem("Choisir répertoire d'échange");
-			ActionListener FichierListener = new ActionListener() {
+			JMenuItem jMenuItemEchange = new JMenuItem("Choisir repertoire d'echange");
+			ActionListener fichierListener = new ActionListener() {
 				public void actionPerformed(ActionEvent event) {
 					JFileChooser jFileChooser = new JFileChooser();
 					jFileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-					jFileChooser.setDialogTitle("Choisir le répertoire d'échanges");;
+					jFileChooser.setDialogTitle("Choisir le repertoire d'echanges");;
 					jFileChooser.showOpenDialog(mFrame);
+					TwitupMainView.this.setDirectory(jFileChooser.getSelectedFile());
 				}
 			};
-			jMenuItemEchange.addActionListener(FichierListener);
+			jMenuItemEchange.addActionListener(fichierListener);
 			mMenu.add(jMenuItemEchange);
 			return mMenu;
+		}
+
+
+		protected void setDirectory(File selectedFile) {
+			this.model.changeExchangeDirectoryPath(selectedFile);			
 		}
 }
