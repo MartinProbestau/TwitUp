@@ -6,4 +6,5 @@
     <Name>zefs</Name>
     <AvatarPath>Le chemin...</AvatarPath>
     <follows>3</follows>
+    <follows>27</follows>
 </ns2:userXml>

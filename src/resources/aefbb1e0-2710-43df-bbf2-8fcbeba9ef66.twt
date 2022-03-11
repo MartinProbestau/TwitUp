@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:twitXml xmlns:ns2="http://www.example.org/twit/">
+    <ID>aefbb1e0-2710-43df-bbf2-8fcbeba9ef66</ID>
+    <EmissionDate>1646985689645</EmissionDate>
+    <Twiter>d56f94a3-331e-4555-aac0-4ed9c89e3cfa</Twiter>
+    <Text>Un nouveau twit de moins 250 caract @unUtilisateur @user2 #test</Text>
+</ns2:twitXml>
