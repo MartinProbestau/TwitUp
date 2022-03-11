@@ -173,7 +173,7 @@ public class TwitupMainView {
 				public void actionPerformed(ActionEvent event) {
 					JFileChooser jFileChooser = new JFileChooser();
 					jFileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-					jFileChooser.setDialogTitle("Choisir le repertoire d'echanges");;
+					jFileChooser.setDialogTitle("Choisir le repertoire d'echanges");
 					jFileChooser.showOpenDialog(mFrame);
 					TwitupMainView.this.setDirectory(jFileChooser.getSelectedFile());
 				}

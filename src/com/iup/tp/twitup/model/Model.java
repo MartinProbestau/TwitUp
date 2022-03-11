@@ -11,7 +11,7 @@ import com.iup.tp.twitup.ihm.TwitupMainView;
 
 public class Model {
 	
-	public Twitup twitup;
+	private final Twitup twitup;
 	
 	public Model(IDatabase mDatabase, EntityManager mEntityManager, Twitup twitup) {
 		UserController userController = new UserController(mDatabase, mEntityManager);

@@ -75,10 +75,4 @@ public class ButtonEditor extends DefaultCellEditor {
 	    isPushed = false;
 	    return super.stopCellEditing();
 	  }
-
-	  @Override
-	  protected void fireEditingStopped() {
-	    super.fireEditingStopped();
-	  }
-
 }

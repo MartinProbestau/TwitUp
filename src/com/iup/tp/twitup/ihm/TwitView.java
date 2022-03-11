@@ -46,18 +46,12 @@ public class TwitView extends JMenu {
 	
 	TwitController twitController;
 	
-	private List<Component> menuConnecte;
-	
-	private List<Component> menuDeconnecte;
-
 	public TwitView(JFrame mFrame, List<Component> menuConnecte, List<Component> menuDeconnecte, JPanel jPanel,
 			UserController userController, TwitController twitController) {
 		super("Twit");
 		this.jPanel = jPanel;
 		this.mFrame = mFrame;
 		this.userController = userController;
-		this.menuConnecte = menuConnecte;
-		this.menuDeconnecte = menuDeconnecte;
 		this.twitController = twitController;
 		Container mContent = mFrame.getContentPane();
         
@@ -87,9 +81,10 @@ public class TwitView extends JMenu {
 		        JTable table = new JTable(model){
 		            private static final long serialVersionUID = 1L;
 
+		            @Override
 		            public boolean isCellEditable(int row, int column) {                
 		                    return false;               
-		            };
+		            }
 		        };
 		        table.setIntercellSpacing(new Dimension(50,20));
 		        table.setRowHeight(140);
@@ -114,7 +109,7 @@ public class TwitView extends JMenu {
 		                	if(str.contains("@") || str.contains("#")) {
 		                		sort.setRowFilter(RowFilter.regexFilter("(?i)" + str));
 		                	}else {
-		                		sort.setRowFilter(RowFilter.regexFilter("(?i)[#|@][^ ]+" + str));
+		                		sort.setRowFilter(RowFilter.regexFilter("(?i)[#|@]" + str));
 		                	}
 		                }
 		            }
@@ -128,7 +123,7 @@ public class TwitView extends JMenu {
 		                }
 		            }
 		            @Override
-		            public void changedUpdate(DocumentEvent e) {}
+		            public void changedUpdate(DocumentEvent e) { /*A completer*/}
 		        });
 		        
 		        jPanel.add(recherche, new GridBagConstraints(0, 1, 1, 1, 0, 0, GridBagConstraints.CENTER,
@@ -176,8 +171,6 @@ public class TwitView extends JMenu {
 							JOptionPane.showMessageDialog(mFrame, "Veuillez saisir un twit", null, 0);
 						}
 						else {
-							System.out.println(user.getName());
-							System.out.println(textTwit.getText());
 							twitController.addTwit(user, textTwit.getText());
 							textTwit.setText("");
 							JOptionPane.showMessageDialog(mFrame, "Le twit est envoye");

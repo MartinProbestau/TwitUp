@@ -102,7 +102,6 @@ public class UserView extends JMenu {
                 chooser.setDialogTitle("Choisir le repertoire d'echange");
                 int returnVal = chooser.showOpenDialog(UserView.this.mFrame);
                 if(returnVal == JFileChooser.APPROVE_OPTION) {
-                   System.out.println("Vous avez ouvert le fichier : " + chooser.getSelectedFile().getName());
                    lChemin.setText(chooser.getSelectedFile().getPath());
                 }
             }
@@ -127,6 +126,7 @@ public class UserView extends JMenu {
 					 */
 					private static final long serialVersionUID = 1L;
 
+					@Override
 					public Class getColumnClass(int colonne) {
 		        		return getValueAt(2, colonne).getClass();
 		        	}

@@ -229,14 +229,14 @@ public class Twit {
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd MMMM yyyy  'à' HH:mm:ss", Locale.FRENCH);
 		String date = simpleDateFormat.format(new Date(this.getEmissionDate())); 
 		Set<String> listeTag = this.getTags();
-		String tag = "";
+		StringBuilder tag = new StringBuilder("");
 		for(String liste : listeTag) {
-			tag += "#"+liste;
+			tag.append("#"+liste);
 		}
 		
 		Object[] twit = new Object[1];
 		
-		if(tag.equals("")) {
+		if(tag.toString().equals("")) {
 			twit[0] = "<html><p>"+texteTwit+"</p><br><p>"+this.mTwiter.getUserTag()+" @"+this.mTwiter.getUserTag()+"</p><p> -- "+date+" -- </p></html>";
 		}else {
 			twit[0] = "<html><p>"+texteTwit+"</p><br><p>"+this.mTwiter.getName()+" @"+this.mTwiter.getUserTag()+"</p><p>"+tag+"</p><p> -- "+date+" -- </p></html>";

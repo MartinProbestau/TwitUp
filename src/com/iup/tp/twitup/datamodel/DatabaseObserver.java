@@ -4,32 +4,32 @@ public class DatabaseObserver implements IDatabaseObserver {
 	
 	@Override
 	public void notifyTwitAdded(Twit addedTwit) {
-		System.out.println("Twit ajoute !");
+		//S'enclenche quand un twit est ajoute
 	}
 
 	@Override
 	public void notifyTwitDeleted(Twit deletedTwit) {
-		System.out.println("Twit supprime !");
+		//S'enclenche quand un twit est supprime
 	}
 
 	@Override
 	public void notifyTwitModified(Twit modifiedTwit) {
-		System.out.println("Twit modifie !");
+		//S'enclenche quand un twit est modifie
 	}
 
 	@Override
 	public void notifyUserAdded(User addedUser) {
-		System.out.println("Utilisateur " + addedUser.getName() + " ajoute !");
+		//S'enclenche quand un user est ajoute
 	}
 
 	@Override
 	public void notifyUserDeleted(User deletedUser) {
-		System.out.println("Utilisateur " + deletedUser.getName() + " ajoute !");		
+		//S'enclenche quand un user est supprime
 	}
 
 	@Override
 	public void notifyUserModified(User modifiedUser) {
-		System.out.println("Utilisateur " + modifiedUser.getName() + " ajoute !");		
+		//S'enclenche quand un user est modifie
 	}
 
 }
