@@ -29,6 +29,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 
 import com.iup.tp.twitup.controller.UserController;
 import com.iup.tp.twitup.datamodel.User;
@@ -139,6 +140,8 @@ public class UserView extends JMenu {
 		        table.getColumn("Abonnement").setCellRenderer(new ButtonRenderer());
 		        table.getColumn("Abonnement").setCellEditor(new ButtonEditor(new JCheckBox(), userController));
 		        scrollPane.setColumnHeaderView(table.getTableHeader());
+		        TableColumnModel tableColumnModel = table.getColumnModel();
+		        tableColumnModel.getColumn(3).setPreferredWidth(100);
 				jPanel.add(scrollPane, new GridBagConstraints(0, 0, 1, 1, 0, 0, GridBagConstraints.CENTER,
 						GridBagConstraints.HORIZONTAL, new Insets(5, 5, 0, 5), 0, 0));
 				jPanel.add(filtre, new GridBagConstraints(0, 1, 1, 1, 0, 0, GridBagConstraints.CENTER,
